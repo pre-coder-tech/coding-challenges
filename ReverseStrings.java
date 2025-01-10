@@ -2,6 +2,7 @@
 class ReverseStrings {
 
     public static void main(String[] args) {
+        /** Reverse a string without using built-in functions. */
         System.out.println(reverseString("Wissen Technology"));
         System.out.println(reverseStatement("Wissen Technology"));
         System.out.println(reverseWordsMaintainPosition("Wissen Technology"));
