@@ -1,3 +1,4 @@
+package coding_challenges_java;
 
 import java.util.stream.IntStream;
 

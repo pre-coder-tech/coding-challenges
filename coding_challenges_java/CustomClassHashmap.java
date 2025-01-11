@@ -1,3 +1,4 @@
+package coding_challenges_java;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

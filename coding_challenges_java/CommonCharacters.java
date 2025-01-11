@@ -1,3 +1,4 @@
+package coding_challenges_java;
 
 public class CommonCharacters {
     public static void main(String[] args) {

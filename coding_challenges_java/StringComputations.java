@@ -1,3 +1,4 @@
+package coding_challenges_java;
 
 public class StringComputations {
 
@@ -5,6 +6,11 @@ public class StringComputations {
         // Find the first non-repeating character in a string.
         System.out.println(nonRepeatingCharOld("khgfsdnfvsfdvjhdkfhgwuregt"));
         System.out.println(nonRepeatingCharNew("khgfsdnfvsfdvjhdkfhgwuregt"));
+
+         /**
+         * Write a function to perform basic string compression using counts of
+         * repeated characters. Input: "aaabbccdee" Output: "a3b2c2d1e2"
+         */
 
     }
 
