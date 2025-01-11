@@ -48,10 +48,13 @@ public class ValidMountainArray {
         }
 
         for (int i = peakIndex; i < intArr.length-1; i++) {
-            if(intArr[i] < intArr[i+1]) {
+            if(intArr[i] <= intArr[i+1]) {
                 return false;
             }
         }
+
+        if(peakIndex == intArr.length - 1 || peakIndex == 0) return false;
+        
         return true;
      }
 }
