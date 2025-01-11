@@ -12,15 +12,15 @@ public class FindVowelsConsonants {
         /**
          * Count the number of vowels and consonants in a string.
          */
-        System.out.println(findVowelsOld("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
-        System.out.println(findVowelsNew("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
+        System.out.println(findVowelsTraditionalWay("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
+        System.out.println(findVowelsFunctionalWay("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
 
-        System.out.println(findConsonantsOld("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
-        System.out.println(findConsonantsNew("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
+        System.out.println(findConsonantsTraditionalWay("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
+        System.out.println(findConsonantsFunctionalWay("hgdfvmoiutfywehfbdjapsdofkadsjbfpwe"));
 
     }
 
-    static String findVowelsOld(String str) {
+    static String findVowelsTraditionalWay(String str) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         Map<Character, Integer> vowelsCount = new HashMap<>();
         for (char s : str.toCharArray()) {
@@ -31,7 +31,7 @@ public class FindVowelsConsonants {
         return vowelsCount.toString();
     }
 
-    static String findVowelsNew(String str) {
+    static String findVowelsFunctionalWay(String str) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         Map<Character, Integer> vowelsCount = new HashMap<>();
         str.chars()
@@ -50,7 +50,7 @@ public class FindVowelsConsonants {
         return vowelsCount.toString();
     }
 
-    static String findConsonantsOld(String str) {
+    static String findConsonantsTraditionalWay(String str) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         Map<Character, Integer> consonantsCount = new HashMap<>();
         for (char s : str.toCharArray()) {
@@ -61,7 +61,7 @@ public class FindVowelsConsonants {
         return consonantsCount.toString();
     }
 
-    static String findConsonantsNew(String str) {
+    static String findConsonantsFunctionalWay(String str) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
         Map<Character, Integer> consonantsCount = new HashMap<>();
         str.chars()

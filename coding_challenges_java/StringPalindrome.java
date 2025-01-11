@@ -8,16 +8,16 @@ public class StringPalindrome {
         /**
          * Check if a string is a palindrome.
          */
-        System.err.println("Is String 'MOM' a Palindrome?: " + isStringPalindromeOld("MOM"));
-        System.err.println("Is String 'ROTATOR' a Palindrome?: " + isStringPalindromeOld("ROTATOR"));
-        System.err.println("Is String 'step not on pets' a Palindrome?: " + isStringPalindromeOld("step not on pets"));
+        System.err.println("Is String 'MOM' a Palindrome?: " + isStringPalindromeTraditionalWay("MOM"));
+        System.err.println("Is String 'ROTATOR' a Palindrome?: " + isStringPalindromeTraditionalWay("ROTATOR"));
+        System.err.println("Is String 'step not on pets' a Palindrome?: " + isStringPalindromeTraditionalWay("step not on pets"));
 
-        System.err.println("Is String 'MOM' a Palindrome?: " + isStringPalindromeNew("MOM"));
-        System.err.println("Is String 'ROTATOR' a Palindrome?: " + isStringPalindromeNew("ROTATOR"));
-        System.err.println("Is String 'step not on pets' a Palindrome?: " + isStringPalindromeNew("step not on pets"));
+        System.err.println("Is String 'MOM' a Palindrome?: " + isStringPalindromeFunctionalWay("MOM"));
+        System.err.println("Is String 'ROTATOR' a Palindrome?: " + isStringPalindromeFunctionalWay("ROTATOR"));
+        System.err.println("Is String 'step not on pets' a Palindrome?: " + isStringPalindromeFunctionalWay("step not on pets"));
     }
 
-    static boolean isStringPalindromeOld(String originalString) {
+    static boolean isStringPalindromeTraditionalWay(String originalString) {
         String cleanedStr = originalString.replaceAll("\\s+", "");
         char[] reversedCharArray = new char[cleanedStr.length()];
         for (int i = cleanedStr.length() - 1; i >= 0; i--) {
@@ -26,7 +26,7 @@ public class StringPalindrome {
         return String.valueOf(reversedCharArray).equals(cleanedStr);
     }
 
-    static boolean isStringPalindromeNew(String originalString) {
+    static boolean isStringPalindromeFunctionalWay(String originalString) {
         String cleanedStr = originalString.replaceAll("\\s+", "");
         String reversedStr = new StringBuilder(cleanedStr).reverse().toString();
         return reversedStr.equals(cleanedStr);

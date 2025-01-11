@@ -6,27 +6,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FindAnagramPairs {
+public class FindAnagram {
 
     public static void main(String[] args) {
-        List<ArrayList<String>> anagramPairsOld = getAnagramPairs(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
-        System.out.println(anagramPairsOld);
+        /** Write a program to check if two strings are anagrams of each other. */
+        System.out.println("Are Strings 'aht' & 'hmt' anagram?: " + isAnagramPair("aht", "hmt"));
+        System.out.println("Are Strings 'idj' & 'iks' anagram?: " + isAnagramPair("idj", "iks"));
+        System.out.println("Are Strings 'pka' & 'apk' anagram?: " + isAnagramPair("pka", "apk"));
+        System.out.println("Are Strings 'tap' & 'pat' anagram?: " + isAnagramPair("tap", "pat"));
 
-        List<List<String>> anagramPairsNew = getAnagramPairsNew(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
-        System.out.println(anagramPairsNew);
+        /*
+        * Given an array of strings strs, group the anagrams together. 
+        * You can return the answer in any order.
+        *
+        * Example 1:
+        *
+        * Input: strs = ["eat","tea","tan","ate","nat","bat"]
+        *
+        * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+         */
+        List<ArrayList<String>> anagramPairsTraditionalWay = getAnagramPairs(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
+        System.out.println(anagramPairsTraditionalWay);
+
+        List<List<String>> anagramPairsFunctionalWay = getAnagramPairsFunctionalWay(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
+        System.out.println(anagramPairsFunctionalWay);
+
     }
 
-    /*
-     * Given an array of strings strs, group the anagrams together. 
-     * You can return the answer in any order.
-     *
-     * Example 1:
-     *
-     * Input: strs = ["eat","tea","tan","ate","nat","bat"]
-     *
-     * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
-     */
-    @SuppressWarnings("unchecked")
     static List<ArrayList<String>> getAnagramPairs(List<String> inputStrs) {
         List<ArrayList<String>> anagramPairs = new ArrayList<>();
         ArrayList<String> pair = new ArrayList<>();
@@ -41,7 +47,7 @@ public class FindAnagramPairs {
                         skipStrs.add(inputStrs.get(j));
                     }
                 }
-                anagramPairs.add((ArrayList<String>) pair.clone());
+                anagramPairs.add(new ArrayList<>(pair));
             }
         }
         return anagramPairs;
@@ -55,17 +61,17 @@ public class FindAnagramPairs {
         return new String(str1CharArr).equals(new String(str2CharArr));
     }
 
-    static List<List<String>> getAnagramPairsNew(List<String> inputStrs) {     
+    static List<List<String>> getAnagramPairsFunctionalWay(List<String> inputStrs) {
         Map<String, List<String>> anagramMap = new HashMap<>();
 
         inputStrs.forEach(str -> {
             String sortedStr = str.chars()
-                                .sorted()
-                                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                                .toString();
+                    .sorted()
+                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                    .toString();
             anagramMap.computeIfAbsent(sortedStr, k -> new ArrayList<>()).add(str);
         });
-        
+
         return new ArrayList<>(anagramMap.values());
     }
 }

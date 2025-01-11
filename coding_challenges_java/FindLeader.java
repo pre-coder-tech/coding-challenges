@@ -7,10 +7,10 @@ import java.util.stream.IntStream;
 public class FindLeader {
 
     public static void main(String[] args) {
-        List<Integer> leadersOld = findLeaderOld(new int[]{16, 17, 4, 3, 5, 2, 7});
-        System.out.println(leadersOld.toString());
-        List<Integer> leadersNew = findLeaderNew(new int[]{16, 17, 4, 3, 5, 2, 7});
-        System.out.println(leadersNew.toString());
+        List<Integer> leadersTraditionalWay = findLeaderTraditionalWay(new int[]{16, 17, 4, 3, 5, 2, 7});
+        System.out.println(leadersTraditionalWay.toString());
+        List<Integer> leadersFunctionalWay = findLeaderFunctionalWay(new int[]{16, 17, 4, 3, 5, 2, 7});
+        System.out.println(leadersFunctionalWay.toString());
     }
 
     /**
@@ -27,7 +27,7 @@ public class FindLeader {
      * its right i.e., [2], therefore 5 is a leader. 2 has no element to its
      * right, therefore 2 is a leader.
      */
-    static List<Integer> findLeaderOld(int[] numbers) {
+    static List<Integer> findLeaderTraditionalWay(int[] numbers) {
         List<Integer> leaders = new ArrayList<> ();
         boolean leader;
         for (int i = 0; i < numbers.length; i++) {
@@ -42,7 +42,7 @@ public class FindLeader {
         return leaders;
     }
 
-    static List<Integer> findLeaderNew(int[] numbers) {
+    static List<Integer> findLeaderFunctionalWay(int[] numbers) {
         List<Integer> leaders = new ArrayList<>();
         IntStream.range(0, numbers.length).forEach(i -> {
             if(IntStream.range(i+1, numbers.length).allMatch(j -> numbers[i] > numbers[j])) {

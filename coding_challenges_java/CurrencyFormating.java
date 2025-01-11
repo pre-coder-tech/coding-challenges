@@ -8,7 +8,7 @@ public class CurrencyFormating  {
         double payment = 12346578;
         
         String us = NumberFormat.getCurrencyInstance(Locale.US).format(payment);
-        String india = NumberFormat.getCurrencyInstance(new Locale("en", "IN")).format(payment);
+        String india = NumberFormat.getCurrencyInstance(Locale.of("en", "IN")).format(payment);
         String china = NumberFormat.getCurrencyInstance(Locale.CHINA).format(payment);
         String france = NumberFormat.getCurrencyInstance(Locale.FRANCE).format(payment);
 
