@@ -10,7 +10,8 @@ public class FindAnagram {
 
     public static void main(String[] args) {
         /**
-         * Write a program to check if two strings are anagrams of each other.
+         * Given two strings s and t, return true if t is an anagram of s, and
+         * false otherwise.
          */
         System.out.println("Are Strings 'aht' & 'hmt' anagram?: " + isAnagramPair("aht", "hmt"));
         System.out.println("Are Strings 'idj' & 'iks' anagram?: " + isAnagramPair("idj", "iks"));
@@ -27,7 +28,7 @@ public class FindAnagram {
         *
         * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
          */
-        List<List<String>> anagramPairsTraditionalWay = getAnagramPairs(new String[] {"eat", "tea", "tan", "ate", "nat", "bat"});
+        List<List<String>> anagramPairsTraditionalWay = getAnagramPairs(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
         System.out.println(anagramPairsTraditionalWay);
 
         List<List<String>> anagramPairsFunctionalWay = getAnagramPairsFunctionalWay(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
@@ -38,7 +39,7 @@ public class FindAnagram {
     static List<List<String>> getAnagramPairs(String[] strs) {
         Map<String, List<String>> anagramPairs = new HashMap<>();
 
-        for (String str: strs) {
+        for (String str : strs) {
             char[] charArray = str.toCharArray();
             Arrays.sort(charArray);
             String sortedStr = String.valueOf(charArray);
@@ -70,14 +71,13 @@ public class FindAnagram {
         }
         return anagramPairs;
     } */
-
     static boolean isAnagramPair(String str1, String str2) {
         char[] str1CharArr = str1.toCharArray();
         char[] str2CharArr = str2.toCharArray();
         Arrays.sort(str1CharArr);
         Arrays.sort(str2CharArr);
         return new String(str1CharArr).equals(new String(str2CharArr));
-    } 
+    }
 
     static List<List<String>> getAnagramPairsFunctionalWay(List<String> inputStrs) {
         Map<String, List<String>> anagramMap = new HashMap<>();
