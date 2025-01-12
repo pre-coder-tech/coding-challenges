@@ -44,12 +44,48 @@ public class ArrayComputations {
          * The remaining elements of nums are not important as well as the size
          * of nums. Return k.
          */
-        int[] nums = {1,1,2}; // Input array
+        int[] nums = {1, 1, 2}; // Input array
         int[] expectedNums = {1, 2}; // The expected answer with correct length
+        System.out.print("nums: " + Arrays.toString(nums));
 
         int k = removeDuplicates(nums); // Calls your implementation
 
-        System.out.println("nums: " + Arrays.toString(nums) + " || k: " + k + " || expectedNums: " + Arrays.toString(expectedNums));
+        System.out.println(" || k: " + k + " || expectedNums: " + Arrays.toString(expectedNums));
+
+        /**
+         * Remove Element
+         *
+         * Given an integer array nums and an integer val, remove all
+         * occurrences of val in nums in-place. The order of the elements may be
+         * changed. Then return the number of elements in nums which are not
+         * equal to val.
+         *
+         * Consider the number of elements in nums which are not equal to val
+         * be k, to get accepted, you need to do the following things:
+         *
+         * Change the array nums such that the first k elements of nums
+         * contain the elements which are not equal to val. The remaining
+         * elements of nums are not important as well as the size of nums.
+         * Return k.
+         */
+        int[] nums1 = {3,2,2,3}; // Input array
+        int[] expectedNums1 = {2,2}; // The expected answer with correct length
+        System.out.print("nums: " + Arrays.toString(nums1));
+        
+        int l = removeElement(nums1, 3); // Calls your implementation
+
+        System.out.println(" || l: " + l + " || expectedNums: " + Arrays.toString(expectedNums1));
+    }
+
+    static int removeElement(int[] nums, int val) {
+        int index = 0;
+        int reIndex = 0;
+        for (; index < nums.length; index++) {
+            if (nums[index] != val) {
+               nums[reIndex++] = nums[index];
+            }
+        }
+        return reIndex;
     }
 
     static int removeDuplicates(int[] nums) {
