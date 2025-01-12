@@ -23,6 +23,44 @@ public class StringComputations {
         /* Write programs to count repeated words in a sentence. */
         System.out.println(countWords("Given an array of integers arr, return true if and only if it is a valid mountain array."));
         System.out.println(countWords("a set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses."));
+
+        /**
+         *
+         * Find the Index of the First Occurrence in a String Solved  
+         * Given two strings needle and haystack, return the index of
+         * the first occurrence of needle in haystack, or -1 if needle is not
+         * part of haystack.
+         * Example 1:
+         * Input: haystack = "sadbutsad", needle = "sad" Output: 0 Explanation:
+         * "sad" occurs at index 0 and 6. The first occurrence is at index 0, so
+         * we return 0. 
+         * 
+         * Example 2:
+         * Input: haystack = "leetcode", needle = "leeto" Output: -1
+         * Explanation: "leeto" did not occur in "leetcode", so we return -1.
+         */
+        System.out.println(strStr("mississippi", "pi"));
+        System.out.println(strStr("hello", "ll"));
+        System.out.println(strStr("abc", "c"));
+        System.out.println(strStr("a", "a"));
+        System.out.println(strStr("sadbutmad", "sad"));
+        System.out.println(strStr("leetcode", "leeto"));
+    }
+
+    static int strStr(String haystack, String needle) {
+        if (haystack.equals(needle)) {
+            return 0;
+        } else if (needle.length() == 1) {
+            return haystack.indexOf(needle);
+        } else {
+            for (int index = 0; index <= haystack.length() - needle.length(); index++) {
+                String subString = haystack.substring(index, index + needle.length());
+                if (subString.equals(needle)) {
+                    return index;
+                }
+            }
+        }
+        return -1;
     }
 
     static Integer countWords(String sentence) {
