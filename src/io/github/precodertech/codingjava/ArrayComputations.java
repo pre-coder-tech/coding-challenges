@@ -1,6 +1,8 @@
 package io.github.precodertech.codingjava;
 
 import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ArrayComputations {
 
@@ -26,6 +28,41 @@ public class ArrayComputations {
         System.out.println(canBeIncreasing(new int[]{2, 3, 1, 2}));
         System.out.println(canBeIncreasing(new int[]{1, 1, 1}));
 
+        /**
+         * Remove Duplicates from Sorted Array
+         *
+         * Given an integer array nums sorted in non-decreasing order, remove
+         * the duplicates in-place such that each unique element appears only
+         * once. The relative order of the elements should be kept the same.
+         * Then return the number of unique elements in nums.
+         *
+         * Consider the number of unique elements of nums to be k, to get
+         * accepted, you need to do the following things:
+         *
+         * Change the array nums such that the first k elements of nums contain
+         * the unique elements in the order they were present in nums initially.
+         * The remaining elements of nums are not important as well as the size
+         * of nums. Return k.
+         */
+        int[] nums = {1,1,2}; // Input array
+        int[] expectedNums = {1, 2}; // The expected answer with correct length
+
+        int k = removeDuplicates(nums); // Calls your implementation
+
+        System.out.println("nums: " + Arrays.toString(nums) + " || k: " + k + " || expectedNums: " + Arrays.toString(expectedNums));
+    }
+
+    static int removeDuplicates(int[] nums) {
+        Set<Integer> uniqueElements = new TreeSet<>();
+        int index;
+        for (index = 0; index < nums.length; index++) {
+            uniqueElements.add(nums[index]);
+        }
+        index = 0;
+        for (Integer num : uniqueElements) {
+            nums[index++] = num;
+        }
+        return uniqueElements.size();
     }
 
     static boolean canBeIncreasing(int[] nums) {
