@@ -1,4 +1,4 @@
-package coding_challenges_java;
+package io.github.precodertech.codingjava;
 
 public class CaseConversion {
 

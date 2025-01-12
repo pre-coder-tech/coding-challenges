@@ -1,4 +1,4 @@
-package coding_challenges_java;
+package io.github.precodertech.codingjava;
 
 import java.util.Collections;
 import java.util.List;

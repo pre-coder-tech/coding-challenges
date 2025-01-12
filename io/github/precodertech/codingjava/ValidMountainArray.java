@@ -1,4 +1,4 @@
-package coding_challenges_java;
+package io.github.precodertech.codingjava;
 
 public class ValidMountainArray {
 
@@ -53,8 +53,6 @@ public class ValidMountainArray {
             }
         }
 
-        if(peakIndex == intArr.length - 1 || peakIndex == 0) return false;
-        
-        return true;
+        return !(peakIndex == intArr.length - 1 || peakIndex == 0);
      }
 }
