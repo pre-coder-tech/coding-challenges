@@ -9,7 +9,9 @@ import java.util.Map;
 public class FindAnagram {
 
     public static void main(String[] args) {
-        /** Write a program to check if two strings are anagrams of each other. */
+        /**
+         * Write a program to check if two strings are anagrams of each other.
+         */
         System.out.println("Are Strings 'aht' & 'hmt' anagram?: " + isAnagramPair("aht", "hmt"));
         System.out.println("Are Strings 'idj' & 'iks' anagram?: " + isAnagramPair("idj", "iks"));
         System.out.println("Are Strings 'pka' & 'apk' anagram?: " + isAnagramPair("pka", "apk"));
@@ -25,7 +27,7 @@ public class FindAnagram {
         *
         * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
          */
-        List<ArrayList<String>> anagramPairsTraditionalWay = getAnagramPairs(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
+        List<List<String>> anagramPairsTraditionalWay = getAnagramPairs(new String[] {"eat", "tea", "tan", "ate", "nat", "bat"});
         System.out.println(anagramPairsTraditionalWay);
 
         List<List<String>> anagramPairsFunctionalWay = getAnagramPairsFunctionalWay(new ArrayList<>(Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat")));
@@ -33,9 +35,25 @@ public class FindAnagram {
 
     }
 
-    static List<ArrayList<String>> getAnagramPairs(List<String> inputStrs) {
-        List<ArrayList<String>> anagramPairs = new ArrayList<>();
-        ArrayList<String> pair = new ArrayList<>();
+    static List<List<String>> getAnagramPairs(String[] strs) {
+        Map<String, List<String>> anagramPairs = new HashMap<>();
+
+        for (String str: strs) {
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            String sortedStr = String.valueOf(charArray);
+
+            anagramPairs.putIfAbsent(sortedStr, new ArrayList<>());
+            anagramPairs.get(sortedStr).add(str);
+        }
+        return new ArrayList<>(anagramPairs.values());
+
+    }
+
+    /*  The Time Complexity is O(n^2) hence won't suitable for very large arrays
+    static List<List<String>> getAnagramPairs(List<String> inputStrs) {
+        List<List<String>> anagramPairs = new ArrayList<>();
+        List<String> pair = new ArrayList<>();
         List<String> skipStrs = new ArrayList<>();
         for (int i = 0; i < inputStrs.size(); i++) {
             pair.clear();
@@ -51,7 +69,7 @@ public class FindAnagram {
             }
         }
         return anagramPairs;
-    }
+    } */
 
     static boolean isAnagramPair(String str1, String str2) {
         char[] str1CharArr = str1.toCharArray();
@@ -59,7 +77,7 @@ public class FindAnagram {
         Arrays.sort(str1CharArr);
         Arrays.sort(str2CharArr);
         return new String(str1CharArr).equals(new String(str2CharArr));
-    }
+    } 
 
     static List<List<String>> getAnagramPairsFunctionalWay(List<String> inputStrs) {
         Map<String, List<String>> anagramMap = new HashMap<>();
