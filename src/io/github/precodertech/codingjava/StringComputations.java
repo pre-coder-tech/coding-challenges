@@ -26,17 +26,14 @@ public class StringComputations {
 
         /**
          *
-         * Find the Index of the First Occurrence in a String Solved  
-         * Given two strings needle and haystack, return the index of
-         * the first occurrence of needle in haystack, or -1 if needle is not
-         * part of haystack.
-         * Example 1:
-         * Input: haystack = "sadbutsad", needle = "sad" Output: 0 Explanation:
-         * "sad" occurs at index 0 and 6. The first occurrence is at index 0, so
-         * we return 0. 
-         * 
-         * Example 2:
-         * Input: haystack = "leetcode", needle = "leeto" Output: -1
+         * Find the Index of the First Occurrence in a String Solved Given two
+         * strings needle and haystack, return the index of the first occurrence
+         * of needle in haystack, or -1 if needle is not part of haystack.
+         * Example 1: Input: haystack = "sadbutsad", needle = "sad" Output: 0
+         * Explanation: "sad" occurs at index 0 and 6. The first occurrence is
+         * at index 0, so we return 0.
+         *
+         * Example 2: Input: haystack = "leetcode", needle = "leeto" Output: -1
          * Explanation: "leeto" did not occur in "leetcode", so we return -1.
          */
         System.out.println(strStr("mississippi", "pi"));
@@ -45,6 +42,74 @@ public class StringComputations {
         System.out.println(strStr("a", "a"));
         System.out.println(strStr("sadbutmad", "sad"));
         System.out.println(strStr("leetcode", "leeto"));
+
+        /**
+         * You are given a license key represented as a string s that consists
+         * of only alphanumeric characters and dashes. The string is separated
+         * into n + 1 groups by n dashes. You are also given an integer k.
+         * 
+         * We want to reformat the string s such that each group contains
+         * exactly k characters, except for the first group, which could be
+         * shorter than k but still must contain at least one character.
+         * Furthermore, there must be a dash inserted between two groups, and
+         * you should convert all lowercase letters to uppercase.
+
+         * Return the reformatted license key.
+         * 
+         * Example 1:
+         * Input: s = "5F3Z-2e-9-w", k = 4 Output: "5F3Z-2E9W" Explanation: The
+         * string s has been split into two parts, each part has 4 characters.
+         * Note that the two extra dashes are not needed and can be removed.
+         * 
+         * Example 2:
+         * Input: s = "2-5g-3-J", k = 2 Output: "2-5G-3J" Explanation: The
+         * string s has been split into three parts, each part has 2 characters
+         * except the first part as it could be shorter as mentioned above.
+         */
+        System.out.println(licenseKeyFormatting("5F3Z-2e-9-w", 4));
+    }
+
+    static String licenseKeyFormatting(String s, int k) {
+        s = s.replaceAll("^-+", "").replaceAll("-+$", "");
+
+        if (s.length() <= k) {
+            return s.toUpperCase();
+        }
+
+        String[] groups = s.split("-");
+        StringBuilder sb = new StringBuilder();
+        String updatedString;
+        if (groups.length > 1 && groups[0].length() < k) {
+            sb.append(groups[0].toUpperCase());
+            sb.append("-");
+            updatedString = s.substring(groups[0].length()).replaceAll("-", "").toUpperCase();
+        } else {
+            updatedString = s.replaceAll("-", "").toUpperCase();
+        }
+
+        if (updatedString.length() % k != 0) {
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.lastIndexOf("-"));
+            }
+            sb.append(updatedString.substring(0, updatedString.length() % k));
+            sb.append("-");
+            updatedString = updatedString.substring(updatedString.length() % k);
+        }
+        for (int i = 0; i < updatedString.length(); i += k) {
+            if (i != 0 && i < updatedString.length()) {
+                sb.append("-");
+            }
+            if (i + k < updatedString.length()) {
+                sb.append(updatedString.substring(i, i + k));
+            } else {
+                sb.append(updatedString.substring(i));
+            }
+
+        }
+        if (sb.lastIndexOf("-") == sb.length() - 1) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return sb.toString();
     }
 
     static int strStr(String haystack, String needle) {
